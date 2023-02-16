@@ -66,6 +66,7 @@
     }
 
     h1 {
+      padding-top: 1.0rem;
       font-size: 1.4rem;
       margin: 0;
     }
@@ -133,7 +134,7 @@
   #post-list {
     margin-top: 1.5rem;
 
-    .post-preview .post-meta {
+    .post-preview-image .post-preview .post-meta {
       .pin {
         background: var(--pin-bg);
         border-radius: 5px;
@@ -174,5 +175,32 @@
 @media all and (max-width: 1200px) {
   #post-list {
     padding-right: 0;
+  }
+}
+
+%preview-margin {
+  margin: 0;
+}
+
+.post-preview-image {
+ /*@include align-left;*/
+  @extend %preview-margin;
+  @extend %rounded;
+
+  max-width: 75%;
+
+  &:not(.no-bg) {
+    img.lazyloaded {
+      background: var(--img-bg);
+    }
+  }
+
+  img {
+    aspect-ratio: 40 / 21;
+    -o-object-fit: cover;
+    object-fit: cover;
+
+    @extend %preview-margin;
+    @extend %rounded;
   }
 }
